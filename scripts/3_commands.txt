@@ -1,0 +1,60 @@
+# hmean
+# Version 1.0 commands
+bash 3_run-submitTaxonGroupExtRamp.sh archaea 1.0 00:03:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh bacteria 1.0 00:10:00 hmean False 02:00:00
+bash 3_run-submitTaxonGroupExtRamp.sh fungi 1.0 00:30:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh invertebrate 1.0 01:00:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh mammalia 1.0 02:00:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh protozoa 1.0 00:20:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh vertebrate-other 1.0 02:00:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh viridiplantae 1.0 02:00:00 hmean False 00:10:00
+
+# Version 1.0-fixed commands
+bash 3_run-submitTaxonGroupExtRamp.sh archaea 1.0-fixed 00:03:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh bacteria 1.0-fixed 00:10:00 hmean False 02:00:00
+bash 3_run-submitTaxonGroupExtRamp.sh fungi 1.0-fixed 00:30:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh invertebrate 1.0-fixed 01:00:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh mammalia 1.0-fixed 02:00:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh protozoa 1.0-fixed 00:20:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh vertebrate-other 1.0-fixed 02:00:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh viridiplantae 1.0-fixed 02:00:00 hmean False 00:10:00
+
+# Version 1.0-fixed-truncated commands
+bash 3_run-submitTaxonGroupExtRamp.sh archaea 1.0-fixed-truncated 00:03:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh bacteria 1.0-fixed-truncated 00:10:00 hmean False 02:00:00
+bash 3_run-submitTaxonGroupExtRamp.sh fungi 1.0-fixed-truncated 00:30:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh invertebrate 1.0-fixed-truncated 01:00:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh mammalia 1.0-fixed-truncated 02:00:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh protozoa 1.0-fixed-truncated 00:20:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh vertebrate-other 1.0-fixed-truncated 02:00:00 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh viridiplantae 1.0-fixed-truncated 02:00:00 hmean False 00:10:00
+
+# Version 2.0 commands
+bash 3_run-submitTaxonGroupExtRamp.sh archaea 2.0 00:00:15 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh bacteria 2.0 00:00:15 hmean False 02:00:00
+bash 3_run-submitTaxonGroupExtRamp.sh fungi 2.0 00:00:30 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh invertebrate 2.0 00:01:30 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh mammalia 2.0 00:01:30 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh protozoa 2.0 00:00:30 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh vertebrate-other 2.0 00:01:30 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh viridiplantae 2.0 00:01:30 hmean False 00:10:00
+
+# Version 2.0-truncated commands
+bash 3_run-submitTaxonGroupExtRamp.sh archaea 2.0-truncated 00:00:15 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh bacteria 2.0-truncated 00:00:15 hmean False 02:00:00
+bash 3_run-submitTaxonGroupExtRamp.sh fungi 2.0-truncated 00:00:30 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh invertebrate 2.0-truncated 00:01:30 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh mammalia 2.0-truncated 00:01:30 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh protozoa 2.0-truncated 00:00:30 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh vertebrate-other 2.0-truncated 00:01:30 hmean False 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh viridiplantae 2.0-truncated 00:01:30 hmean False 00:10:00
+
+# Version 2.0 score commands
+bash 3_run-submitTaxonGroupExtRamp.sh archaea 2.0 00:00:30 hmean True 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh bacteria 2.0 00:00:30 hmean True 02:00:00
+bash 3_run-submitTaxonGroupExtRamp.sh fungi 2.0 00:01:00 hmean True 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh invertebrate 2.0 00:02:00 hmean True 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh mammalia 2.0 00:04:00 hmean True 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh protozoa 2.0 00:01:00 hmean True 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh vertebrate-other 2.0 00:04:00 hmean True 00:10:00
+bash 3_run-submitTaxonGroupExtRamp.sh viridiplantae 2.0 00:04:00 hmean True 00:10:00

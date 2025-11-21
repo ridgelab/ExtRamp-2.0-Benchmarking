@@ -1,0 +1,6 @@
+bash 4_confirm_completion.sh 1.0
+bash 4_confirm_completion.sh 1.0-fixed
+bash 4_confirm_completion.sh 1.0-fixed-truncated
+bash 4_confirm_completion.sh 2.0
+bash 4_confirm_completion.sh 2.0-truncated
+bash 4_confirm_completion.sh 2.0 hmean True

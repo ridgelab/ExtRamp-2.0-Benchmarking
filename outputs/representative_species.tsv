@@ -1,0 +1,25 @@
+Taxonomic Group	Species ID	Scientific Name	Common Name	Number of CDS Transcripts
+archaea	GCF_023169545.1	Nanobdella aerobiophila		723
+archaea	GCF_000969885.1	Methanosarcina thermophila TM-1		2706
+archaea	GCF_020618475.1	Haladaptatus halobius		7398
+bacteria	GCF_024820135.1	Candidatus Nasuia deltocephalincola		135
+bacteria	GCF_000214705.1	Desulfofundulus kuznetsovii DSM 6115		3464
+bacteria	GCF_002057455.1	[Actinomadura] parvosata subsp. kistnae		11781
+fungi	GCF_000280035.1	Encephalitozoon romaleae SJ-2008		1831
+fungi	GCF_000512605.2	Kwoniella pini CBS 10737		7809
+fungi	GCF_026210795.1	Rhizophagus irregularis		31132
+invertebrate	GCA_034768735.1	Schistosoma mekongi		8533
+invertebrate	GCF_002204515.2	Aedes aegypti	Yellow Fever Mosquito	20790
+invertebrate	GCF_020536995.1	Dreissena polymorpha	Zebra Mussel	60635
+mammalia	GCA_010411085.1	Cervus hanglu yarkandensis	Yarkand Deer	17766
+mammalia	GCF_008632895.1	Mastomys coucha	Southern Multimammate Mouse	41298
+mammalia	GCF_000001405.40	Homo sapiens	Human	94162
+protozoa	GCF_000691945.2	Babesia microti strain RI		3597
+protozoa	GCA_962240445.1	Leishmania utingensis		7714
+protozoa	GCA_026184515.1	Peronosclerospora sorghi		19118
+vertebrate-other	GCA_965212795.1	Bubo scandiacus	Snowy Owl	16650
+vertebrate-other	GCF_947461875.1	Haliaeetus albicilla	White-Tailed Eagle	35462
+vertebrate-other	GCF_023373465.1	Oncorhynchus keta	Chum Salmon	85166
+viridiplantae	GCF_000214015.3	Ostreococcus tauri		7492
+viridiplantae	GCF_003576645.1	Ipomoea triloba	Trilobed Morning Glory	36009
+viridiplantae	GCA_964030465.3	Urochloa decumbens		150626
