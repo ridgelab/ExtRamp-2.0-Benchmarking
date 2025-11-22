@@ -1,10 +1,26 @@
-# TODO
-- Document 11_calculate_human_speeds.sh
-- Document other-figures
-- Document random-scores
+This README documents the benchmarking process we used to benchmark ExRamp 2.0 compared to ExtRamp 1.0. Each step contains an explanation, followed by the command(s) we ran to complete the step. Unless otherwise specified, the commands were all run within the [scripts](./scripts/) folder.
 
+# Figures
+The following are the figures in the paper and scripts used to generate them:
+* [Figure 1](./outputs/time_mem/num_seq_to_time_mem-hmean.png) --- [Figure 1 Script](./scripts/8_process_benchmark2_data.py)
+* Supplementary Figure 1 - created in Lucidchart
+* [Supplementary Figure 2](./outputs/benchmark1_differences.png) --- [Supplementary Figure 2 Script](6.3_visualize_diffs.py)
+* Supplementary Figure 3 [gmean](./outputs/time_mem/num_seq_to_time_mem-gmean.png), [mean](./outputs/time_mem/num_seq_to_time_mem-mean.png), and [median](./outputs/time_mem/num_seq_to_time_mem-median.png) --- [Supplementary Figure 3 Script](./scripts/8_get_benchmark2_data.py)
+* [Supplementary Figure 4](./scripts/other-figures/hypothetical_plots.png) --- [Supplementary Figure 4 Script](./scripts/other-figures/hypothetical_plots.py)
+* [Supplementary Figure 5](./outputs/scores/). [](./outputs/scores/ramp_strength_robustness_combined.png) --- [Supplementary Figure 5 Script](./scripts/10_analyze_scores.py)
+* [Supplementary Figure 6](./outputs/scores/vulnerable_sequence_scores_mammalia.png) --- [Supplementary Figure 6 Script](10_plot_vulnerable_sequence_scores_mammalia.py)
 
-This README documents the benchmarking process we used to benchmark ExRamp 2.0 compared to ExtRamp 1.0. Each step contains an explanation, followed by the command(s) we ran to complete the step.
+# Links
+ExtRamp 2.0 Paper- coming soon!\
+[ExtRamp 2.0 Release GitHub](https://github.com/ridgelab/ExtRamp-2.0)
+
+# REQUIREMENTS
+These benchmarking scripts were developed and run in Python version 3.12.2.
+
+Required libraries are available in the [requirements.txt](./scripts/requirements.txt) file. Use the following command to install them:
+```
+pip3 install -r requirements.txt
+```
 
 # Data Collection and Processing
 We prepared a database of all available NCBI CDS FASTAs for species with reference genomes using the steps outlined in the [NCBI-CDS-Database-Builder](https://github.com/MattCloward/NCBI-CDS-Database-Builder) GitHub repository. The code from that repository was downloaded and placed in the [./scripts/NCBI-CDS-Database-Builder/](./scripts/NCBI-CDS-Database-Builder/) folder and all database-building scripts were run sequentially from that folder. All data was downloaded on Sep 3, 2025 using version 18.6.0 of NCBI's datasets command-line tool.
@@ -88,10 +104,18 @@ python 6.2_explain_unexplained_differences.py
 ```
 Finally, the results are visualized in pie charts using [6.3_visualize_diffs.py](./scripts/6.3_visualize_diffs.py), written to [benchmark1_differences.png](./outputs/benchmark1_differences.png), which is Supplementary Figure 2.
 
-[6.4_summarize_diff_causes_species.py](./scripts/6.4_summarize_diff_causes_species.py) contains duplicate code from [6.1_summarize_diff_causes.py](./scripts/6.1_summarize_diff_causes.py) and is used to get species-specific differences between v1 and v2. We used it to get the number of ramps that differ between ExtRamp versions for [Homo sapiens](./outputs/benchmark1_difference_explanation-GCF_000001405.40-mammalia-hmean.tsv).
+[6.4_summarize_diff_causes_species.py](./scripts/6.4_summarize_diff_causes_species.py) contains duplicate code from [6.1_summarize_diff_causes.py](./scripts/6.1_summarize_diff_causes.py) and is used to get species-specific differences between v1 and v2. We used it to get the number of ramps that differ between ExtRamp versions for [*Homo sapiens*](./outputs/benchmark1_difference_explanation-GCF_000001405.40-mammalia-hmean.tsv).
+```
+TODO
+```
+
+[6.5_length_vs_status.py](./scripts/6.5_length_vs_status.py) reads all the ExtRamp results for v1 and v2, writing to [a log file](./outputs/length_vs_status.log) the number and percent of sequences whose ramp status differed and whose ramp length differed between versions.
+```
+python 6.5_length_vs_status.py
+```
 
 ## Speed and Memory Benchmark
-In the second benchmark, we ran only the representative species through ExtRamp v1 and v2, recording the time and max memory each used. We made sure to run these all on the same BYU supercomputer hardware, one slurm job for each of the mean functions ExtRamp supports (harmonic mean "hmean", geometric mean "gmean", arithmetic mean "mean", and median). Each representative species was run 10 times for each version, with 30 second breaks between each run. The system was warmed up using a run on Homo sapiens for both versions. These benchmarks were run using the [7_speed_mem_benchmark.sh](./scripts/7_speed_mem_benchmark.sh) script:
+In the second benchmark, we ran only the representative species through ExtRamp v1 and v2, recording the time and max memory each used. We made sure to run these all on the same BYU supercomputer hardware, one slurm job for each of the mean functions ExtRamp supports (harmonic mean "hmean", geometric mean "gmean", arithmetic mean "mean", and median). Each representative species was run 10 times for each version, with 30 second breaks between each run. The system was warmed up using a run on *Homo sapiens* for both versions. These benchmarks were run using the [7_speed_mem_benchmark.sh](./scripts/7_speed_mem_benchmark.sh) script:
 ```
 sbatch 7_speed_mem_benchmark.sh hmean
 sbatch 7_speed_mem_benchmark.sh gmean
@@ -114,7 +138,7 @@ python 8_process_benchmark2_data.py
 ```
 
 ## Numpy Array Benchmark
-[9_np_mem_benchmark.sh](./scripts/9_np_mem_benchmark.sh) tests wether the memory usage improvement in ExtRamp 2.0 is solely due to its use of numpy arrays. It does this by running three versions of ExtRamp on the Homo sapiens input data: 2.0, 1.0, and a version of 1.0 that uses numpy arrays. The max memory usage for each run is printed using /usr/bin/time.
+[9_np_mem_benchmark.sh](./scripts/9_np_mem_benchmark.sh) tests wether the memory usage improvement in ExtRamp 2.0 are solely due to its use of numpy arrays. It does this by running three versions of ExtRamp on the *Homo sapiens* input data: [2.0](./scripts/ExtRamp2.0.py), [1.0](./scripts/ExtRamp1.0.py), and [a version of 1.0 that uses numpy arrays](./scripts/ExtRamp-1.0-fixed-np.py). The max memory usage for each run is printed to the slurm output log using /usr/bin/time.
 ```
 mkdir -p ../outputs/np_mem/slurm
 sbatch 9_np_mem_benchmark.sh
@@ -128,12 +152,24 @@ sbatch 9_windowmeans_benchmark.sh
 ```
 
 ## Scores Benchmark
-[10_scores_benchmark.sh](./scripts/9_scores_benchmark.sh) calculates ramp scores for the Homo sapiens input data, printing out the time it takes to calculate and write them to file.
+[10_scores_benchmark.sh](./scripts/9_scores_benchmark.sh) calculates ramp scores for the *Homo sapiens* input data, printing out the time it takes to calculate and write them to file.
 ```
 mkdir -p ../outputs/scores/slurm
 sbatch 10_scores_benchmark.sh
 ```
-These scores are then analyzed by [10_analyze_scores.py](./scripts/10_analyze_scores.py), which plots distributions of ramp strength and ramp robustness scores. It also plots ramp strength against ramp robustness, showing that they are highly coorelated, but not the same. These plots are saved to the [scores output folder](./outputs/scores/)
+These scores are then analyzed by [10_analyze_scores.py](./scripts/10_analyze_scores.py), which plots distributions of ramp strength and ramp robustness scores for *Homo sapiens*. It also plots ramp strength against ramp robustness for *Homo sapiens*, showing that they are highly coorelated, but not the same. These plots are saved to the [scores output folder](./outputs/scores/). [](./outputs/scores/ramp_strength_robustness_combined.png) is Supplementary Figure 5.
 ```
 python 10_analyze_scores.py
 ```
+
+[10_plot_vulnerable_sequence_scores_mammalia.py](./scripts/10_plot_vulnerable_sequence_scores_mammalia.py) creates plots similar to [10_analyze_scores.py](./scripts/10_analyze_scores.py), except that it plots scores for all mammalian sequences in the dataset instead. The graphs compare the scores for the sequences whose ramp status changed between ExtRamp versions to those that did not.\
+In the [ramp strength vs ramp robustness score plot](./outputs/scores/vulnerable_sequence_scores_mammalia.png), Supplementary Figure 6, blue points are sequences that didn't change status, red points are sequences that changed status because of the last window mean exclusion bug, and yellow points are sequences that changed status due to differences in rounding between ExtRamp versions.\
+In the [strength histogram](./outputs/scores/vulnerable_sequence_strength_histogram_mammalia.png) and [robustness histogram](./outputs/scores/vulnerable_sequence_robustness_histogram_mammalia.png) plots, the blue distribution represents the sequences that did not change ramp status between versions while the red distribition represents the sequences that did change ramp status between versions.
+
+# Hypothetical Plot
+[hypothetical_plots.py](./scripts/other-figures/hypothetical_plots.py) plots [hypothetical_plots.png](./scripts/other-figures/hypothetical_plots.png) which is Supplementary Figure 4. It is used to help explain how ramp strength and ramp robustness scores are calculated.
+
+# CONTACT
+Questions? Open a new issue on GitHub or email us at: mattcloward@byu.edu
+
+Thank you, and happy researching!

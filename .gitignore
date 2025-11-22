@@ -9,8 +9,8 @@ outputs/1.0-fixed/*
 outputs/1.0-fixed-truncated/*
 outputs/2.0/*
 outputs/2.0-truncated/*
-outputs/np_mem/*
-outputs/scores/*
+outputs/np_mem/GCF*
+outputs/scores/GCF*
 outputs/speeds/GCF*
 outputs/taxonomy/*
 outputs/time_mem/1.0/*
@@ -18,8 +18,9 @@ outputs/time_mem/2.0/*
 outputs/time_mem/slurm/*
 outputs/unexplained/1.0/*
 outputs/unexplained/2.0/*
-outputs/window_means/*
+outputs/window_means/GCF*
 
 scripts/run-scripts/*
 scripts/old/*
 scripts/other-figures/backups/*
+scripts/random_scores/*
