@@ -1,4 +1,4 @@
-This README documents the benchmarking process we used to benchmark ExRamp 2.0 compared to ExtRamp 1.0. Each step contains an explanation, followed by the command(s) we ran to complete the step. Unless otherwise specified, the commands were all run within the [scripts](./scripts/) folder.
+This README documents the benchmarking process we used to benchmark ExRamp 2.0 compared to ExtRamp 1.0. Each step contains an explanation, followed by the command(s) we ran to complete the step. The commands were all run within the directory that contains them.
 
 # Figures
 The following are the figures in the paper and scripts used to generate them:
@@ -168,6 +168,32 @@ In the [strength histogram](./outputs/scores/vulnerable_sequence_strength_histog
 
 # Hypothetical Plot
 [hypothetical_plots.py](./scripts/other-figures/hypothetical_plots.py) plots [hypothetical_plots.png](./scripts/other-figures/hypothetical_plots.png) which is Supplementary Figure 4. It is used to help explain how ramp strength and ramp robustness scores are calculated.
+
+# Window Mean Plotting
+The window means of any sequence in the database can be plotted using the two scripts in the [scripts/plot_window_means](./scripts/plot_window_means/) directory. First, [get_window_mean_speeds.sh](./scripts/plot_window_means/get_window_mean_speeds.sh) is used to write a window mean speeds file for a given species.
+```
+bash plot_window_means/get_window_mean_speeds.sh <taxonomic group> <species ID>
+```
+Then, [plot_window_mean_speeds.py](./scripts/plot_window_means/plot_window_mean_speeds.py) is used to plot the window mean speeds, given a species ID and sequence header.
+```
+python plot_window_mean_speeds.py <species ID> <header>
+```
+## Examples
+There were two outliers of interest on the [vulnerable ramp strength vs robustnesss score graph](./outputs/scores/vulnerable_sequence_scores_mammalia.png). 
+
+We plotted the red outlier close to x=-2.7 [here](./outputs/plot_window_means/windowMeans-GCF_949987515.2-LOC132419140.png) using the following commands:
+```
+bash plot_window_means/get_window_mean_speeds.sh mammalia GCF_949987515.2
+python plot_window_mean_speeds.py GCF_949987515.2 ">lcl|NC_082684.1_cds_XP_059859157.1_6662 [gene=LOC132419140] [db_xref=GeneID:132419140] [protein=variant surface antigen E-like] [protein_id=XP_059859157.1] [location=complement(177448856..177449518)] [gbkey=CDS]"
+```
+The high ramp strength score is clearly caused by the addition of the last window mean, which is not interpreted by ExtRamp 1.0
+
+We plotted the yellow outlier on the top right of the plot [here](./outputs/plot_window_means/windowMeans-GCF_903995435.1-SIX5.png)using the following commands:
+```
+bash plot_window_means/get_window_mean_speeds.sh mammalia GCF_903995435.1
+python plot_window_mean_speeds.py GCF_903995435.1 ">lcl|NC_067155.1_cds_XP_051018459.1_20262 [gene=Six5] [db_xref=GeneID:127203671] [protein=homeobox protein SIX5] [protein_id=XP_051018459.1] [location=join(13557655..13558430,13559216..13560018,13560133..13560722)] [gbkey=CDS]"
+```
+This plot shows that the rounding differences between ExtRamp 1.0 and 2.0 may be mediated by two minimums in close proximity within the first 8% of the sequence.
 
 # CONTACT
 Questions? Open a new issue on GitHub or email us at: mattcloward@byu.edu
