@@ -1,4 +1,6 @@
-This README documents the benchmarking process we used to benchmark ExRamp 2.0 compared to ExtRamp 1.0. Each step contains an explanation, followed by the command(s) we ran to complete the step. The commands were all run within the directory that contains them.
+# ExtRamp 2.0 Benchmarking Code
+
+This README documents the benchmarking process we used to benchmark ExRamp 2.0 compared to ExtRamp 1.0. Each step contains an explanation, followed by the command(s) we ran to complete the step. The commands were all run within the directory that contains their script.
 
 # Figures
 The following are the figures in the paper and scripts used to generate them:
@@ -34,9 +36,7 @@ python 1_filter_by_assembly_level.py
 ## Get New Species Counts
 After filtering out lower quality assemblies, we reran the `6_get_num_database_species.sh' file from the [NCBI-CDS-Database-Builder](https://github.com/MattCloward/NCBI-CDS-Database-Builder) GitHub repository to get an updated count of species left after all filtering steps. This file is saved to [num_database_species.tsv](./outputs/num_database_species.tsv) and is Supplementary Table 1.
 ```
-cd NCBI-CDS-Database-Builder
 bash 6_get_num_database_species.sh
-cd ..
 ```
 
 ## Get Representative Species
@@ -62,6 +62,9 @@ We ran each of these programs on our filtered dataset to compare outputs and get
 
 ### Confirm Job Completion
 [4_confirm_completion.sh](./scripts/4_confirm_completion.sh) checks that all jobs completed successfully. It takes in a version, mean function, and score flag, checking all corresponding slurm files to confirm they end with a line starting with "Total time:". The commands run for this step can be found in [4_commands.txt](./scripts/4_commands.txt).
+```
+bash 4_confirm_completion.sh
+```
 If any jobs were found to have failed in this step (due to running out of time), we reran them individially with more time using [3_run-submitOneExtRamp.sh](./scripts/3_run-submitOneExtRamp.sh). For example:
 ```
 bash 3_run-submitOneExtRamp.sh GCF_000001405.40 mammalia 1.0 02:00:00 hmean False
@@ -72,8 +75,8 @@ bash 4_delete_old_duplicate_slurms.sh mammalia 1.0 hmean False
 ```
 
 ### Summarize Results
-[5.1_get_benchmark1_results.py](./scripts/5.1_get_benchmark1_results.py) and [5.2_get_mem_benchmark1_results.sh](./scripts/5.2_get_mem_benchmark1_results.sh) both create a half of the summarized results, pt1 and pt2 respectively. Part 1 reads from the slurm files to get, for each species, the total valid sequences, the number of ramps for v1.0, v1.0-fixed, and v2.0, and the time taken to run v1.0, v2.0 and v2.0 with scores. Part 2 uses the "sacct" command to get, for each species, the max memory used for v1.0 and v2.0 and the difference in max memory used between both versions. In part 2, [5.2_get_mem_benchmark1_results.sh](./scripts/5.2_get_mem_benchmark1_results.sh) calls [5.2_clean_up_mem_benchmark1_results.py](./scripts/5.2_clean_up_mem_benchmark1_results.py) to clean up the results and put them in TSV format. The results can be found in the following two files:
-[benchmark1_summary_pt1-hmean.tsv](./outputs/benchmark1_summary_pt1-hmean.tsv)
+[5.1_get_benchmark1_results.py](./scripts/5.1_get_benchmark1_results.py) and [5.2_get_mem_benchmark1_results.sh](./scripts/5.2_get_mem_benchmark1_results.sh) both create a half of the summarized results, pt1 and pt2 respectively. Part 1 reads from the slurm files to get, for each species, the total valid sequences, the number of ramps for v1.0, v1.0-fixed, and v2.0, and the time taken to run v1.0, v2.0 and v2.0 with scores. Part 2 uses the "sacct" command to get, for each species, the max memory used for v1.0 and v2.0 and the difference in max memory used between both versions. In part 2, [5.2_get_mem_benchmark1_results.sh](./scripts/5.2_get_mem_benchmark1_results.sh) calls [5.2_clean_up_mem_benchmark1_results.py](./scripts/5.2_clean_up_mem_benchmark1_results.py) to clean up the results and put them in TSV format. The results can be found in the following two files:\
+[benchmark1_summary_pt1-hmean.tsv](./outputs/benchmark1_summary_pt1-hmean.tsv)\
 [benchmark1_summary_pt2-hmean.tsv](./outputs/benchmark1_summary_pt2-hmean.tsv).
 
 These scripts are run like so:
@@ -187,14 +190,14 @@ We plotted the red outlier close to x=-2.7 [here](./outputs/plot_window_means/wi
 bash plot_window_means/get_window_mean_speeds.sh mammalia GCF_949987515.2
 python plot_window_mean_speeds.py GCF_949987515.2 ">lcl|NC_082684.1_cds_XP_059859157.1_6662 [gene=LOC132419140] [db_xref=GeneID:132419140] [protein=variant surface antigen E-like] [protein_id=XP_059859157.1] [location=complement(177448856..177449518)] [gbkey=CDS]"
 ```
-The high ramp strength score is clearly caused by the addition of the last window mean, which is not interpreted by ExtRamp 1.0
+The high ramp strength score is clearly caused by the addition of the last window mean in the calculations, which is not interpreted by ExtRamp 1.0.
 
-We plotted the yellow outlier on the top right of the plot [here](./outputs/plot_window_means/windowMeans-GCF_903995435.1-SIX5.png)using the following commands:
+We plotted the yellow outlier on the top right of the plot [here](./outputs/plot_window_means/windowMeans-GCF_903995435.1-SIX5.png) using the following commands:
 ```
 bash plot_window_means/get_window_mean_speeds.sh mammalia GCF_903995435.1
 python plot_window_mean_speeds.py GCF_903995435.1 ">lcl|NC_067155.1_cds_XP_051018459.1_20262 [gene=Six5] [db_xref=GeneID:127203671] [protein=homeobox protein SIX5] [protein_id=XP_051018459.1] [location=join(13557655..13558430,13559216..13560018,13560133..13560722)] [gbkey=CDS]"
 ```
-This plot shows that the rounding differences between ExtRamp 1.0 and 2.0 may be mediated by two minimums in close proximity within the first 8% of the sequence.
+This plot shows that the rounding differences between ExtRamp 1.0 and 2.0 may be caused by the two minimums in close proximity within the first 8% of the sequence.
 
 # CONTACT
 Questions? Open a new issue on GitHub or email us at: mattcloward@byu.edu
