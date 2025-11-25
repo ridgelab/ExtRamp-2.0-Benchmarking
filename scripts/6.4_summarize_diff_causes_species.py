@@ -45,8 +45,8 @@ def get_ramp_diffs(ramps1, ramps2):
     return diff_headers
 
 if __name__ == "__main__":
-    species_id = sys.argv[1] if len(sys.argv) > 1 else ""
-    taxonomic_group = sys.argv[2] if len(sys.argv) > 2 else ""
+    taxonomic_group = sys.argv[1] if len(sys.argv) > 1 else ""
+    species_id = sys.argv[2] if len(sys.argv) > 2 else ""
     MEAN = sys.argv[3] if len(sys.argv) > 3 else "hmean"
 
     if not species_id or not taxonomic_group:
@@ -134,3 +134,4 @@ if __name__ == "__main__":
     with open(out_path, "w") as outf:
         outf.write("total sequences\ttotal differing\tlast window\trounding\tother\tpercent differing\tpercent last window\tpercent rounding\tpercent other\n")
         outf.write(f"{total_sequences}\t{total_diff_1_2}\t{total_diff_1_1_fixed}\t{total_diff_1_2_rounding}\t{total_diff_1_2_not_explained}\t{percent_diff}\t{percent_last_window}\t{percent_diff_rounding}\t{percent_diff_other}\n")
+    print("done.")

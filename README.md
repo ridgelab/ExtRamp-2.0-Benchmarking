@@ -103,12 +103,13 @@ The above script fails to explain a small handful of differences, which are outp
 python 6.2_explain_unexplained_differences.py
 ```
 Finally, the results are visualized in pie charts using [6.3_visualize_diffs.py](./scripts/6.3_visualize_diffs.py), written to [benchmark1_differences.png](./outputs/benchmark1_differences.png), which is Supplementary Figure 2.
-
+```
+python 6.3_visualize_diffs.py
+```
 [6.4_summarize_diff_causes_species.py](./scripts/6.4_summarize_diff_causes_species.py) contains duplicate code from [6.1_summarize_diff_causes.py](./scripts/6.1_summarize_diff_causes.py) and is used to get species-specific differences between v1 and v2. We used it to get the number of ramps that differ between ExtRamp versions for [*Homo sapiens*](./outputs/benchmark1_difference_explanation-GCF_000001405.40-mammalia-hmean.tsv).
 ```
-TODO
+python 6.4_summarize_diff_causes_species.py mammalia GCF_000001405.40
 ```
-
 [6.5_length_vs_status.py](./scripts/6.5_length_vs_status.py) reads all the ExtRamp results for v1 and v2, writing to [a log file](./outputs/length_vs_status.log) the number and percent of sequences whose ramp status differed and whose ramp length differed between versions.
 ```
 python 6.5_length_vs_status.py
