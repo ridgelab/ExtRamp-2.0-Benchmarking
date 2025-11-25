@@ -3,7 +3,6 @@ inputs/filtered_out/*
 inputs/low_assembly/*
 inputs/original/*
 
-outputs/old/*
 outputs/plot_window_means/GC[FA]*
 outputs/1.0/*
 outputs/1.0-fixed/*
@@ -22,6 +21,3 @@ outputs/unexplained/2.0/*
 outputs/window_means/GC[FA]*
 
 scripts/run-scripts/*
-scripts/old/*
-scripts/other-figures/backups/*
-scripts/random_scores/*

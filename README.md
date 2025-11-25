@@ -5,7 +5,7 @@ This README documents the benchmarking process we used to benchmark ExRamp 2.0 c
 # Figures
 The following are the figures in the paper and scripts used to generate them:
 * [Figure 1](./outputs/time_mem/num_seq_to_time_mem-hmean.png) --- [Figure 1 Script](./scripts/8_process_benchmark2_data.py)
-* Supplementary Figure 1 - created in Lucidchart
+* Supplementary Figure 1 --- created in Lucidchart
 * [Supplementary Figure 2](./outputs/benchmark1_differences.png) --- [Supplementary Figure 2 Script](6.3_visualize_diffs.py)
 * Supplementary Figure 3 [gmean](./outputs/time_mem/num_seq_to_time_mem-gmean.png), [mean](./outputs/time_mem/num_seq_to_time_mem-mean.png), and [median](./outputs/time_mem/num_seq_to_time_mem-median.png) --- [Supplementary Figure 3 Script](./scripts/8_get_benchmark2_data.py)
 * [Supplementary Figure 4](./scripts/other-figures/hypothetical_plots.png) --- [Supplementary Figure 4 Script](./scripts/other-figures/hypothetical_plots.py)
