@@ -9,7 +9,8 @@ def make_autopct(values):
     def my_autopct(pct):
         total = sum(values)
         val = int(round(pct*total/100.0))
-        return '{p:.2f}%\n({v:d})'.format(p=pct, v=val)
+        val = f"{val:,}"
+        return '{p:.2f}%\n({v})'.format(p=pct, v=val)
     return my_autopct
 
 inpath = "../outputs/benchmark1_difference_explanation-final-hmean.tsv"
