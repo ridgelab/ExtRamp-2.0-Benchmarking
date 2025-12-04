@@ -6,11 +6,12 @@ This README documents the benchmarking process we used to benchmark ExRamp 2.0 c
 The following are the figures in the paper and scripts used to generate them:
 * [Figure 1](./outputs/time_mem/num_seq_to_time_mem-hmean.png) --- [Figure 1 Script](./scripts/8_process_benchmark2_data.py)
 * Supplementary Figure 1 --- created in Lucidchart
-* [Supplementary Figure 2](./outputs/benchmark1_differences.png) --- [Supplementary Figure 2 Script](6.3_visualize_diffs.py)
+* Supplementary Figure 2 --- created in Lucidchart
 * Supplementary Figure 3 [gmean](./outputs/time_mem/num_seq_to_time_mem-gmean.png), [mean](./outputs/time_mem/num_seq_to_time_mem-mean.png), and [median](./outputs/time_mem/num_seq_to_time_mem-median.png) --- [Supplementary Figure 3 Script](./scripts/8_get_benchmark2_data.py)
-* [Supplementary Figure 4](./scripts/other-figures/hypothetical_plots.png) --- [Supplementary Figure 4 Script](./scripts/other-figures/hypothetical_plots.py)
-* [Supplementary Figure 5](./outputs/scores/). [](./outputs/scores/ramp_strength_robustness_combined.png) --- [Supplementary Figure 5 Script](./scripts/10_analyze_scores.py)
-* [Supplementary Figure 6](./outputs/scores/vulnerable_sequence_scores_mammalia.png) --- [Supplementary Figure 6 Script](10_plot_vulnerable_sequence_scores_mammalia.py)
+* [Supplementary Figure 4](./outputs/benchmark1_differences.png) --- [Supplementary Figure 4 Script](6.3_visualize_diffs.py)
+* [Supplementary Figure 5](./scripts/other-figures/hypothetical_plots.png) --- [Supplementary Figure 5 Script](./scripts/other-figures/hypothetical_plots.py)
+* [Supplementary Figure 6](./outputs/scores/ramp_strength_robustness_combined.png) --- [Supplementary Figure 6 Script](./scripts/10_analyze_scores.py)
+* [Supplementary Figure 7](./outputs/scores/vulnerable_sequence_scores_mammalia.png) --- [Supplementary Figure 7 Script](10_plot_vulnerable_sequence_scores_mammalia.py)
 
 # Links
 ExtRamp 2.0 Paper- coming soon!\
