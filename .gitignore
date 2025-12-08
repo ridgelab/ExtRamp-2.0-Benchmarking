@@ -19,5 +19,6 @@ outputs/time_mem/slurm/*
 outputs/unexplained/1.0/*
 outputs/unexplained/2.0/*
 outputs/window_means/GC[FA]*
+outputs/rollingsum/GC[FA]*
 
 scripts/run-scripts/*

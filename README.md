@@ -174,6 +174,12 @@ In the [strength histogram](./outputs/scores/vulnerable_sequence_strength_histog
 python 10_plot_vulnerable_sequence_scores_mammalia.py
 ```
 
+## Rolling Sum Benchmark
+It was suggested to us that we use a rolling sum for computing the sliding window means instead of 1D convolutions. 1D convolutions are faster, not because they perform fewer operations, but because NumPy is optimized and compiled in C. Rolling sum sliding windows have the potential to drastically reduce runtime because they perform so many fewer operations. This implementation is found in [ExtRamp2.0-rollingsum.py](./scripts/ExtRamp2.0-rollingsum.py) and benchmarked in [11_rollingsum.sh](./scripts/11_rollingsum.sh). The benchmark script runs the normal version of ExtRamp 2.0, followed by the rolling sum version, printing out the time taken, [available here](./outputs/rollingsum/rollingsum.log). The most important time to compare between versions is on the lines that say: "Isolating ramp sequences... took:". Notably, despite the rolling sum version doing fewer operations, both implementations take about the same amount of time and memory.
+```
+bash 11_rollingsum.sh > ../outputs/rollingsum/rollingsum.log 2>&1
+```
+
 # Hypothetical Plot
 [hypothetical_plots.py](./scripts/other-figures/hypothetical_plots.py) plots [hypothetical_plots.png](./scripts/other-figures/hypothetical_plots.png) which is Supplementary Figure 4. It is used to help explain how ramp strength and ramp robustness scores are calculated.
 
