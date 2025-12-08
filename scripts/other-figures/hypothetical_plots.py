@@ -55,7 +55,7 @@ def createPlotsSideBySide(yPoints1, yPoints2, plotPath):
                     yerr=[(ramp_strength_score2*-1 - 0.02) / 2], color='black', capsize=5)
 
     plt.tight_layout()
-    plt.savefig(plotPath, dpi=300)
+    plt.savefig(plotPath, dpi=350)
 
     print(f"Plots saved as {plotPath}")
 

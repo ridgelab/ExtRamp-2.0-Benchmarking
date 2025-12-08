@@ -29,7 +29,7 @@ plt.xlabel("Ramp Strength", fontsize=14)
 plt.ylabel("Frequency", fontsize=14)
 plt.grid(alpha=0.2)
 plt.tight_layout()
-plt.savefig("../outputs/scores/ramp_strength_frequency.png", dpi=300)
+plt.savefig("../outputs/scores/ramp_strength_frequency.png", dpi=350)
 
 # Plot a ramp robustness histogram
 plt.figure(figsize=(5, 5))
@@ -39,7 +39,7 @@ plt.xlabel("Ramp Robustness", fontsize=14)
 plt.ylabel("Frequency", fontsize=14)
 plt.grid(alpha=0.2)
 plt.tight_layout()
-plt.savefig("../outputs/scores/ramp_robustness_frequency.png", dpi=300)
+plt.savefig("../outputs/scores/ramp_robustness_frequency.png", dpi=350)
 
 # Plot a scatter plot of ramp strength vs robustness
 plt.figure(figsize=(5, 5))
@@ -49,7 +49,7 @@ plt.xlabel("Ramp Strength", fontsize=14)
 plt.ylabel("Ramp Robustness", fontsize=14)
 plt.grid(alpha=0.2)
 plt.tight_layout()
-plt.savefig("../outputs/scores/ramp_strength_vs_robustness.png", dpi=300)
+plt.savefig("../outputs/scores/ramp_strength_vs_robustness.png", dpi=350)
 
 # Plot all three in one figure
 fig, axs = plt.subplots(1, 3, figsize=(15, 5))
@@ -69,7 +69,7 @@ axs[2].set_xlabel("Ramp Strength", fontsize=14)
 axs[2].set_ylabel("Ramp Robustness", fontsize=14)
 axs[2].grid(alpha=0.2)
 plt.tight_layout()
-plt.savefig("../outputs/scores/ramp_strength_robustness_combined.png", dpi=300)
+plt.savefig("../outputs/scores/ramp_strength_robustness_combined.png", dpi=350)
 plt.close()
 
 print("Plots saved to ../outputs/scores/")

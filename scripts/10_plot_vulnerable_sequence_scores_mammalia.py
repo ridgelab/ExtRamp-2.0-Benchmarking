@@ -206,7 +206,7 @@ if __name__ == "__main__":
         plt.ylim(-1.05, 1.05)
         plt.grid(True, which='both', linestyle='--', linewidth=0.2, )
         plt.tight_layout()
-        plt.savefig(fig_path, dpi=300)
+        plt.savefig(fig_path, dpi=350)
         write_and_log(f"Plot saved as {fig_path}", logf)
         write_and_log(f"", logf)
 
@@ -234,7 +234,7 @@ if __name__ == "__main__":
         plt.legend()
         plt.grid(True, which='both', linestyle='--', linewidth=0.2)
         plt.tight_layout()
-        plt.savefig(strength_hist_path, dpi=300)
+        plt.savefig(strength_hist_path, dpi=350)
         write_and_log(f"Histogram saved as {strength_hist_path}", logf)  
         write_and_log(f"", logf)
 
@@ -262,7 +262,7 @@ if __name__ == "__main__":
         plt.legend()
         plt.grid(True, which='both', linestyle='--', linewidth=0.2)
         plt.tight_layout()
-        plt.savefig(robustness_hist_path, dpi=300)
+        plt.savefig(robustness_hist_path, dpi=350)
         write_and_log(f"Histogram saved as {robustness_hist_path}", logf)
         write_and_log(f"", logf)
         

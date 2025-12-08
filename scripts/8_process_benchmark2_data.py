@@ -42,7 +42,7 @@ def plot_data(species_id_to_data, out_path, type, mean_label):
     plt.legend()
     plt.grid(True, which="both", ls="--", linewidth=0.1)
     plt.tight_layout()
-    plt.savefig(out_path, dpi=300)
+    plt.savefig(out_path, dpi=350)
     plt.close()
     print(f"Plot saved to {out_path}")
 
@@ -71,7 +71,6 @@ def plot_data2(species_id_to_data, out_path, mean_label):
     ax1.plot(sorted(num_seqs), p2(sorted(num_seqs)), "--", color="#56B4E9")
     ax1.set_ylim(top=max(max(mean_time1), max(mean_time2)) * 1.1)
     ax1.set_xscale("log")
-    # ax1.set_xlabel("Number of Sequences (Log Scale)", fontsize=14)
     ax1.set_ylabel("Time (Minutes)", fontsize=14)
     ax1.set_title(f"{mean_label}", fontsize=16)
     ax1.legend()
@@ -89,12 +88,10 @@ def plot_data2(species_id_to_data, out_path, mean_label):
     ax2.set_xscale("log")
     ax2.set_xlabel("Number of Sequences (Log Scale)", fontsize=14)
     ax2.set_ylabel("Memory (GB)", fontsize=14)
-    # ax2.set_title(f"Memory - {mean_label}", fontsize=16)
-    # ax2.legend()
     ax2.grid(True, which="both", ls="--", linewidth=0.1)
 
     plt.tight_layout()
-    plt.savefig(out_path, dpi=300)
+    plt.savefig(out_path, dpi=350)
     plt.close()
     print(f"Plot saved to {out_path}")
 

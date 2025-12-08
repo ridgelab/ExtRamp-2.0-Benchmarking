@@ -86,7 +86,7 @@ def plot_window_means(window_means1, window_means2, header, species_id, fig_path
     plt.ylabel("Window Mean")
     plt.title(f"Window Means for {header} ({species_id})")
     plt.legend()
-    plt.savefig(fig_path)
+    plt.savefig(fig_path, dpi=350)
     print(f"\t\tFigure saved")
     plt.close()
 

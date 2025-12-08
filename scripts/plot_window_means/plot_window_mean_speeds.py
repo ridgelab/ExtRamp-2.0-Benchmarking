@@ -89,6 +89,6 @@ if __name__ == "__main__":
     plt.title(f"Ribosome Translation Efficiency in {geneName}")
     plt.legend(loc='lower right')
     plt.tight_layout()
-    plt.savefig(figPath, dpi=300)
+    plt.savefig(figPath, dpi=350)
 
     print("done.")
