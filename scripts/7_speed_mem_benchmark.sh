@@ -5,6 +5,8 @@
 #SBATCH --mem-per-cpu=2G
 #SBATCH -J "time_mem_ExtRamp"
 #SBATCH --output=../outputs/time_mem/slurm/slurm-%x.%j.out
+#SBATCH -q pgr2
+#SBATCH --exclusive
 
 # This script runs each of the species in the representative species file 10 times each for both ExtRamp v1.0 and v2.0
 # The hardware is warmed up using one run of each version using Homo sapiens input data. Runs are also spaced out by 
