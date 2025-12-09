@@ -1,0 +1,92 @@
+Running ExtRamp version 2.0
+
+Reading Sequences... took: 2.7674453258514404
+
+1481 sequences were invalid so they were removed!
+	1 had non-standard nucleotides.
+	2 were not divisible by three.
+	1478 were shorter than the 300 nucleotide cutoff.
+
+Total valid sequences: 92681
+
+Calculating codon speeds... took: 29.349846124649048
+Calculating sequence speeds... took: 9.44468879699707
+Creating ramp pool... took: 0.10745906829833984
+
+Isolating ramp sequences... took: 11.857714176177979
+
+13734 Ramp Sequences found
+
+Outputting ramps took: 0.10307908058166504
+
+Total time: 53.67422914505005
+	Command being timed: "python ExtRamp2.0.py -v -t 4 -m mean -w 9 -i ../inputs/filtered/mammalia/GCF_000001405.40/cds_from_genomic.fna -o ../outputs/cumulative_sum/GCF_000001405.40-mean-normal-w9-ramps.fa"
+	User time (seconds): 108.61
+	System time (seconds): 4.91
+	Percent of CPU this job got: 174%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:05.21
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1107512
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1432325
+	Voluntary context switches: 48071
+	Involuntary context switches: 3152
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 15888
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
+
+Running ExtRamp version 2.0 cumulative sum
+
+Reading Sequences... took: 2.6075587272644043
+
+1481 sequences were invalid so they were removed!
+	1 had non-standard nucleotides.
+	2 were not divisible by three.
+	1478 were shorter than the 300 nucleotide cutoff.
+
+Total valid sequences: 92681
+
+Calculating codon speeds... took: 29.70376420021057
+Calculating sequence speeds... took: 9.09948992729187
+Creating ramp pool... took: 0.09930729866027832
+
+Isolating ramp sequences... took: 12.239433526992798
+
+13740 Ramp Sequences found
+
+Outputting ramps took: 0.03263688087463379
+
+Total time: 53.84646725654602
+	Command being timed: "python ExtRamp2.0-cumulative_sum.py -v -t 4 -m mean -w 9 -i ../inputs/filtered/mammalia/GCF_000001405.40/cds_from_genomic.fna -o ../outputs/cumulative_sum/GCF_000001405.40-mean-cumulative_sum-w9-ramps.fa"
+	User time (seconds): 109.89
+	System time (seconds): 4.72
+	Percent of CPU this job got: 172%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:06.26
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1101160
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1276774
+	Voluntary context switches: 47825
+	Involuntary context switches: 835
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 15880
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -17,7 +17,7 @@ import time
 import os
 import traceback
 
-VERSION = "2.0 rolling sum"
+VERSION = "2.0 cumulative sum"
 
 def makeArgParser():
     parser = argparse.ArgumentParser(description="Extract the individual Ramp sequences from a collection of genes")
@@ -360,7 +360,7 @@ def findStDev(array, mean):
 def hmeanSliding(a, ribosomeWindowLength):
     """
     Returns the sliding harmonic mean of the array (a), given the window length (ribosomeWindowLength)
-    using rolling sums.
+    using cumulative sums.
     """
     a = 1 / a
     a = meanSliding(a, ribosomeWindowLength)
@@ -369,7 +369,7 @@ def hmeanSliding(a, ribosomeWindowLength):
 def gmeanSliding(a, ribosomeWindowLength):
     """
     Returns the sliding geometric mean of the array (a), given the window length (ribosomeWindowLength)
-    using rolling sums.
+    using cumulative sums.
     """
     a = np.log(a)
     a = meanSliding(a, ribosomeWindowLength)
@@ -378,7 +378,7 @@ def gmeanSliding(a, ribosomeWindowLength):
 def meanSliding(a, w):
     """
     Returns the sliding arithmetic mean of the array (a), given the window length (ribosomeWindowLength)
-    using rolling sums.
+    using cumulative sums.
     """
     ps = np.concatenate(([0.0], np.cumsum(a)))
     window_sums = ps[w:] - ps[:-w]

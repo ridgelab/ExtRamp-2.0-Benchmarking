@@ -174,10 +174,10 @@ In the [strength histogram](./outputs/scores/vulnerable_sequence_strength_histog
 python 10_plot_vulnerable_sequence_scores_mammalia.py
 ```
 
-## Rolling Sum Benchmark
-It was suggested to us that we use a rolling sum for computing the sliding window means instead of 1D convolutions. 1D convolutions are faster, not because they perform fewer operations, but because NumPy is optimized and compiled in C. Rolling sum sliding windows have the potential to drastically reduce runtime because they perform so many fewer operations. This implementation is found in [ExtRamp2.0-rollingsum.py](./scripts/ExtRamp2.0-rollingsum.py) and benchmarked in [11_rollingsum.sh](./scripts/11_rollingsum.sh). The benchmark script runs the normal version of ExtRamp 2.0, followed by the rolling sum version, printing out the time taken, [available here](./outputs/rollingsum/rollingsum.log). The most important time to compare between versions is on the lines that say: "Isolating ramp sequences... took:". Notably, despite the rolling sum version doing fewer operations, both implementations take about the same amount of time and memory.
+## Cumulative Sum Benchmark
+Late in the development of ExtRamp 2.0, it was suggested to us that we use a cumulative sum for computing the sliding window means instead of 1D convolutions. 1D convolutions are faster than for loops, not because they perform fewer operations, but because NumPy is optimized and compiled in C. Cumulative sum sliding windows have the potential to drastically reduce runtime because they perform so many fewer operations. This implementation is found in [ExtRamp2.0-cumulative_sum.py](./scripts/ExtRamp2.0-cumulative_sum.py) and benchmarked in [11_cumulative_sum.sh](./scripts/11_cumulative_sum.sh). The benchmark script runs the normal version of ExtRamp 2.0, followed by the cumulative sum version, printing out the time taken, [available here](./outputs/cumulative_sum/cumulative_sum.log). The most important time to compare between versions is on the lines that say: "Isolating ramp sequences... took:". Notably, despite the cumulative sum version doing fewer operations it both implementations take about the same amount of time and memory. There is potential for greater algorithm optimization using cumulative sums or rolling sums, but we opted not to explore these optimizations further in this work since the bottleneck of ExtRamp is no longer in sliding window mean calculations.
 ```
-bash 11_rollingsum.sh > ../outputs/rollingsum/rollingsum.log 2>&1
+bash 11_cumulative_sum.sh > ../outputs/cumulative_sum/cumulative_sum.log 2>&1
 ```
 
 # Hypothetical Plot
