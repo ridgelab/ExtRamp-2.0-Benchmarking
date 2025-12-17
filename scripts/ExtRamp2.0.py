@@ -31,7 +31,7 @@ def makeArgParser():
     parser.add_argument("-p", "--speeds", type=str, help="(output) FASTA-like file to write tAI/relative adaptiveness values for each position in the sequence from the codon after the start codon to the codon before the stop codon. Format: Header newline list of values")
     parser.add_argument("-n", "--noRamp", type=str, help="(output) txt file to write the gene names that contained no ramp sequence")
     parser.add_argument("-z", "--removedSequences", default = None, type=str, help="(output) Write the header lines that are removed (e.g., sequence not long enough or not divisible by 3) to output file")
-    parser.add_argument("-x", "--afterRamp", type=str, required=False, help="(output) FASTA file containing gene sequences after the identified ramp sequence")
+    parser.add_argument("-x", "--afterRamp", type=str, help="(output) FASTA file containing gene sequences after the identified ramp sequence")
     parser.add_argument("-t", "--threads", type=int, help="the number of threads you want to run, default = all")
     parser.add_argument("-w", "--window", type=int, default = 9, help="the ribosome window size in codons, default = 9 codons")
     parser.add_argument("-s", "--stdev", type=float, default = -1.0, help="the number of standard deviations below the mean the cutoff value to be included as a ramp for gmean and mean. Not used by default")
@@ -88,6 +88,15 @@ def makeArgParser():
     if args.wij is not None and args.tAI is not None:
         sys.stderr.write("Warning: wij (-j) cannot be used with tAI (-a) because the resulting wij file would be a copy of the tAI file. -j will be ignored.\n")
         args.wij = None
+
+    # generate output folders if they don't exist
+    outFilePaths = [args.ramp, args.scores, args.wij, args.vals, args.speeds, args.noRamp, args.removedSequences, args.afterRamp]
+    outFolders = {os.path.dirname(filePath) for filePath in outFilePaths if filePath and os.path.dirname(filePath)}
+    for folder in sorted(outFolders, key=len, reverse=True):
+        if not os.path.isdir(folder):
+            os.makedirs(folder, exist_ok=True)
+            if args.verbose:
+                sys.stderr.write(f"Automatically created output folder: '{folder}'\n")
     return args
 
 def fileExistsCheck(filename):
