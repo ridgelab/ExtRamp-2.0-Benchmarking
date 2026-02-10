@@ -115,6 +115,10 @@ if __name__ == "__main__":
     strength_hist_path = "../outputs/scores/vulnerable_sequence_strength_histogram_mammalia.png"
     robustness_hist_path = "../outputs/scores/vulnerable_sequence_robustness_histogram_mammalia.png"
 
+    fig_path_tif = "../outputs/scores/vulnerable_sequence_scores_mammalia.tif"
+    strength_hist_path_tif = "../outputs/scores/vulnerable_sequence_strength_histogram_mammalia.tif"
+    robustness_hist_path_tif = "../outputs/scores/vulnerable_sequence_robustness_histogram_mammalia.tif"
+
     with open(log_path, "w") as logf:
         # get the paths for mammalian ramps and scores
         mammalian_2_path = "../outputs/2.0/hmean/mammalia/"
@@ -207,7 +211,8 @@ if __name__ == "__main__":
         plt.grid(True, which='both', linestyle='--', linewidth=0.2, )
         plt.tight_layout()
         plt.savefig(fig_path, dpi=350)
-        write_and_log(f"Plot saved as {fig_path}", logf)
+        plt.savefig(fig_path_tif, dpi=350)
+        write_and_log(f"Plot saved as {fig_path} and {fig_path_tif}", logf)
         write_and_log(f"", logf)
 
         # plot histogram of ramp strength scores for changed sequences compared to unchanged sequences
@@ -235,7 +240,8 @@ if __name__ == "__main__":
         plt.grid(True, which='both', linestyle='--', linewidth=0.2)
         plt.tight_layout()
         plt.savefig(strength_hist_path, dpi=350)
-        write_and_log(f"Histogram saved as {strength_hist_path}", logf)  
+        plt.savefig(strength_hist_path_tif, dpi=350)
+        write_and_log(f"Histogram saved as {strength_hist_path} and {strength_hist_path_tif}", logf)  
         write_and_log(f"", logf)
 
         # plot histogram of ramp robustness scores for changed sequences compared to unchanged sequences
@@ -263,7 +269,8 @@ if __name__ == "__main__":
         plt.grid(True, which='both', linestyle='--', linewidth=0.2)
         plt.tight_layout()
         plt.savefig(robustness_hist_path, dpi=350)
-        write_and_log(f"Histogram saved as {robustness_hist_path}", logf)
+        plt.savefig(robustness_hist_path_tif, dpi=350)
+        write_and_log(f"Histogram saved as {robustness_hist_path} and {robustness_hist_path_tif}", logf)
         write_and_log(f"", logf)
         
         write_and_log("Finished plotting all figures.", logf)

@@ -3,12 +3,12 @@
 This README documents the benchmarking process we used to benchmark ExRamp 2.0 compared to ExtRamp 1.0. Each step contains an explanation, followed by the command(s) we ran to complete the step. The commands were all run within the directory that contains their script.
 
 # Figures
-The following are the figures in the paper and scripts used to generate them:
+The following are the figures in the paper and scripts used to generate them. All figures are in png and tif formats:
 * [Figure 1](./outputs/time_mem/num_seq_to_time_mem-hmean.png) --- [Figure 1 Script](./scripts/8_process_benchmark2_data.py)
 * Supplementary Figure 1 --- created in Lucidchart
 * Supplementary Figure 2 --- created in Lucidchart
 * [Supplementary Figure 3](./scripts/other-figures/hypothetical_plots.png) --- [Supplementary Figure 3 Script](./scripts/other-figures/hypothetical_plots.py)
-* Supplementary Figure 4 [gmean](./outputs/time_mem/num_seq_to_time_mem-gmean.png), [mean](./outputs/time_mem/num_seq_to_time_mem-mean.png), and [median](./outputs/time_mem/num_seq_to_time_mem-median.png) --- [Supplementary Figure 4 Script](./scripts/8_get_benchmark2_data.py)
+* Supplementary Figure 4 [gmean](./outputs/time_mem/num_seq_to_time_mem-gmean.png), [mean](./outputs/time_mem/num_seq_to_time_mem-mean.png), and [median](./outputs/time_mem/num_seq_to_time_mem-median.png) --- [Supplementary Figure 4 Script](./scripts/8_process_benchmark2_data.py)
 * [Supplementary Figure 5](./outputs/benchmark1_differences.png) --- [Supplementary Figure 5 Script](6.3_visualize_diffs.py)
 * [Supplementary Figure 6](./outputs/scores/vulnerable_sequence_scores_mammalia.png) --- [Supplementary Figure 6 Script](./scripts/10_plot_vulnerable_sequence_scores_mammalia.py)
 * [Supplementary Figure 7](./outputs/scores/ramp_strength_robustness_combined.png) --- [Supplementary Figure 7 Script](./scripts/10_analyze_scores.py)
@@ -181,7 +181,10 @@ bash 11_cumulative_sum.sh > ../outputs/cumulative_sum/cumulative_sum.log 2>&1
 ```
 
 # Hypothetical Plot
-[hypothetical_plots.py](./scripts/other-figures/hypothetical_plots.py) plots [hypothetical_plots.png](./scripts/other-figures/hypothetical_plots.png) which is Supplementary Figure 3. It is used to help explain how ramp strength and ramp robustness scores are calculated.
+[hypothetical_plots.py](./scripts/other-figures/hypothetical_plots.py) plots [hypothetical_plots.png](./scripts/other-figures/hypothetical_plots.png) which is Supplementary Figure 3. It is used to help explain how ramp strength and ramp robustness scores are calculated. It is run from the ./scripts/other-figures/ folder.
+```
+python hypothetical_plots.py
+```
 
 # Window Mean Plotting
 The window means of any sequence in the database can be plotted using the two scripts in the [scripts/plot_window_means](./scripts/plot_window_means/) directory. First, [get_window_mean_speeds.sh](./scripts/plot_window_means/get_window_mean_speeds.sh) is used to write a window mean speeds file for a given species.

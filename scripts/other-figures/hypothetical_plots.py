@@ -3,7 +3,7 @@
 
 import matplotlib.pyplot as plt
 
-def createPlotsSideBySide(yPoints1, yPoints2, plotPath):
+def createPlotsSideBySide(yPoints1, yPoints2, plotPath, plotPathTif):
     xPoints1 = list(range(1, len(yPoints1) + 1))
     xPoints2 = list(range(1, len(yPoints2) + 1))
 
@@ -56,10 +56,13 @@ def createPlotsSideBySide(yPoints1, yPoints2, plotPath):
 
     plt.tight_layout()
     plt.savefig(plotPath, dpi=350)
+    plt.savefig(plotPathTif, dpi=350)
 
-    print(f"Plots saved as {plotPath}")
+    print(f"Plots saved as {plotPath} and {plotPathTif}")
 
 yPoints1 = [0.4, 0.45, 0.6, 0.55, 0.65, 0.5, 0.7, 0.65, 0.75, 0.7, 0.8]
 yPoints2 = [0.65, 0.56, 0.62, 0.82, 0.48, 0.58, 0.45, 0.42, 0.62, 0.35, 0.67]
 
-createPlotsSideBySide(yPoints1, yPoints2, "hypothetical_plots.png")
+plotPath = "hypothetical_plots.png"
+plotPathTif = "hypothetical_plots.tif"
+createPlotsSideBySide(yPoints1, yPoints2, plotPath, plotPathTif)

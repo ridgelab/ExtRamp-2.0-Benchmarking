@@ -25,7 +25,7 @@ Total points: 6551478
 Plotting unchanged points...
 Plotting last window changed points...
 Plotting rounding changed points...
-Plot saved as ../outputs/scores/vulnerable_sequence_scores_mammalia.png
+Plot saved as ../outputs/scores/vulnerable_sequence_scores_mammalia.png and ../outputs/scores/vulnerable_sequence_scores_mammalia.tif
 
 Unchanged points strength mean: -0.80, std: 0.79
 Changed points strength mean: -0.04, std: 0.22
@@ -34,7 +34,7 @@ T-test statistic: -247.99, p-value: 0.00e+00
 
 Plotting histogram of ramp strength scores for unchanged points...
 Plotting histogram of ramp strength scores for changed points...
-Histogram saved as ../outputs/scores/vulnerable_sequence_strength_histogram_mammalia.png
+Histogram saved as ../outputs/scores/vulnerable_sequence_strength_histogram_mammalia.png and ../outputs/scores/vulnerable_sequence_strength_histogram_mammalia.tif
 
 Unchanged points robustness magnitudes mean: 0.97, std: 0.07
 Changed points robustness magnitudes mean: 0.78, std: 0.18
@@ -43,6 +43,6 @@ T-test statistic: 73.55, p-value: 0.00e+00
 
 Plotting histogram of robustness scores for unchanged points...
 Plotting histogram of robustness scores for changed points...
-Histogram saved as ../outputs/scores/vulnerable_sequence_robustness_histogram_mammalia.png
+Histogram saved as ../outputs/scores/vulnerable_sequence_robustness_histogram_mammalia.png and ../outputs/scores/vulnerable_sequence_robustness_histogram_mammalia.tif
 
 Finished plotting all figures.

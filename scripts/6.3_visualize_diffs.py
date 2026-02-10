@@ -15,6 +15,7 @@ def make_autopct(values):
 
 inpath = "../outputs/benchmark1_difference_explanation-final-hmean.tsv"
 outpath = "../outputs/benchmark1_differences.png"
+outpath_tif = "../outputs/benchmark1_differences.tif"
 
 with open(inpath, "r") as inf:
     header = inf.readline().strip().split("\t")
@@ -50,4 +51,5 @@ ax2.set_title("Difference Reasons", fontsize=16)
 plt.tight_layout()
 # plt.show()
 plt.savefig(outpath, dpi=350)
-print(f"Figure saved to {outpath}")
+plt.savefig(outpath_tif, dpi=350)
+print(f"Figure saved to {outpath} and {outpath_tif}")

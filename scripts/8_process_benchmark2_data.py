@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import statistics
 import numpy as np
 
-def plot_data(species_id_to_data, out_path, type, mean_label):
+def plot_data(species_id_to_data, out_path, out_path_tif, type, mean_label):
     # Prepare data for plotting
     num_seqs = [data["num_seqs"] for data in species_id_to_data.values()]
     if type == "Time":
@@ -43,10 +43,11 @@ def plot_data(species_id_to_data, out_path, type, mean_label):
     plt.grid(True, which="both", ls="--", linewidth=0.1)
     plt.tight_layout()
     plt.savefig(out_path, dpi=350)
+    plt.savefig(out_path_tif, dpi=350)
     plt.close()
-    print(f"Plot saved to {out_path}")
+    print(f"Plot saved to {out_path} and {out_path_tif}")
 
-def plot_data2(species_id_to_data, out_path, mean_label):
+def plot_data2(species_id_to_data, out_path, out_path_tif, mean_label):
     # plot the time and memory data in two connected plots
     # Prepare data for plotting
     num_seqs = [data["num_seqs"] for data in species_id_to_data.values()]
@@ -92,8 +93,9 @@ def plot_data2(species_id_to_data, out_path, mean_label):
 
     plt.tight_layout()
     plt.savefig(out_path, dpi=350)
+    plt.savefig(out_path_tif, dpi=350)
     plt.close()
-    print(f"Plot saved to {out_path}")
+    print(f"Plot saved to {out_path} and {out_path_tif}")
 
 def write_summary_stats(species_id_to_data, out_path):
     with open(out_path, "w") as outf:
@@ -147,6 +149,11 @@ if __name__ == "__main__":
         time_out_path = f"{BASE_OUT_DIR}/num_seq_to_time-{mean}.png"
         mem_out_path = f"{BASE_OUT_DIR}/num_seq_to_mem-{mean}.png"
         fig_path = f"{BASE_OUT_DIR}/num_seq_to_time_mem-{mean}.png"
+
+        time_out_path_tif = f"{BASE_OUT_DIR}/num_seq_to_time-{mean}.tif"
+        mem_out_path_tif = f"{BASE_OUT_DIR}/num_seq_to_mem-{mean}.tif"
+        fig_path_tif = f"{BASE_OUT_DIR}/num_seq_to_time_mem-{mean}.tif"
+
         summary_out_path = f"{BASE_OUT_DIR}/benchmark2_summary_{mean}.tsv"
         if not os.path.exists(in_path):
             print(f"Input file {in_path} does not exist. Skipping {mean}.")
@@ -155,12 +162,12 @@ if __name__ == "__main__":
         # Process the data
         species_id_to_data = prep_data(in_path)
         # Plot the data
-        # Create the combined time and memory plot
-        plot_data2(species_id_to_data, fig_path, mean_label)
         # Create the time plot
-        plot_data(species_id_to_data, time_out_path, "Time", mean_label)
+        plot_data(species_id_to_data, time_out_path, time_out_path_tif, "Time", mean_label)
         # Create the memory plot
-        plot_data(species_id_to_data, mem_out_path, "Memory", mean_label)
+        plot_data(species_id_to_data, mem_out_path, mem_out_path_tif, "Memory", mean_label)
+        # Create the combined time and memory plot
+        plot_data2(species_id_to_data, fig_path, fig_path_tif, mean_label)
         # Write summary stats
         write_summary_stats(species_id_to_data, summary_out_path)
 
