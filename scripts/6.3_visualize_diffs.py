@@ -40,13 +40,13 @@ if other > 0:
     labels2.append('Other')
     sizes2.append(other)
 ax1.pie(sizes, labels=labels, colors=colors, autopct=make_autopct(sizes),
-    shadow=False, startangle=140)
+    shadow=False, startangle=140, textprops={'fontsize': 14})
 ax1.axis('equal')
-ax1.set_title("Overall Differences")
+ax1.set_title("Overall Differences", fontsize=16)
 ax2.pie(sizes2, labels=labels2, colors=colors2, autopct=make_autopct(sizes2),
-    shadow=False, startangle=140)
+    shadow=False, startangle=140, textprops={'fontsize': 14})
 ax2.axis('equal')
-ax2.set_title("Difference Reasons")
+ax2.set_title("Difference Reasons", fontsize=16)
 plt.tight_layout()
 # plt.show()
 plt.savefig(outpath, dpi=350)
