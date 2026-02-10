@@ -19,6 +19,8 @@ import traceback
 
 VERSION = "2.0"
 
+STOP_CODONS = ["TAA", "TAG", "TGA"]
+
 def makeArgParser():
     parser = argparse.ArgumentParser(description="Extract the individual Ramp sequences from a collection of genes")
     parser.add_argument("-i", "--input", type=str, required=True, help="(input) Required FASTA file containing gene sequences (.gz or .gzip for gzipped)")
@@ -212,9 +214,8 @@ def cutAtEarlyStop(seq):
     """
     Returns the sequence after truncating everything after the first stop codon.
     """
-    stopCodons = ["TAA", "TAG", "TGA"]
     for index in range(0, len(seq), 3):
-        if seq[index:index+3] in stopCodons:
+        if seq[index:index+3] in STOP_CODONS:
             break
     return seq[0:index+3]
 
