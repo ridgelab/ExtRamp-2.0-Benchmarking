@@ -441,9 +441,10 @@ def writeEfficiencyFile(outPath, efficiencyVals):
     """
     Writes the efficiency values (sequence codon efficiencies or window means) to a FASTA-like file.
     """
-    with open(outPath, "w") as outf:
-        for header in efficiencyVals:
-            outf.write(header + "\n" + ",".join(map(str, efficiencyVals[header])) + "\n")
+    outf = gzip.open(outPath, "wt") if outPath.endswith(".gz") else open(outPath, "w")
+    for header in efficiencyVals:
+        outf.write(header + "\n" + ",".join(map(str, efficiencyVals[header])) + "\n")
+    outf.close()
 
 def outputRampSeqs(rampSeqs, args):
     """
@@ -454,11 +455,11 @@ def outputRampSeqs(rampSeqs, args):
         rampSeqs = qualityCheck(rampSeqs, args.stdevRampLength)
     outPut = sys.stdout
     if args.ramp:
-        outPut = open(args.ramp, "w")
+        outPut = gzip.open(args.ramp, "wt") if args.ramp.endswith(".gz") else open(args.ramp, "w")
     if args.afterRamp:
-        afterRampFile = open(args.afterRamp, "w")
+        afterRampFile = gzip.open(args.afterRamp, "wt") if args.afterRamp.endswith(".gz") else open(args.afterRamp, "w")
     if args.noRamp:
-        noRampFile = open(args.noRamp, "w")
+        noRampFile = gzip.open(args.noRamp, "wt") if args.noRamp.endswith(".gz") else open(args.noRamp, "w")
     count = 0
     for line in rampSeqs:
         if not args.afterRamp:
@@ -683,11 +684,12 @@ def outputRampScores(rampScores, outPath):
     """
     Writes the ramp scores to the outPath file.
     """
-    with open(outPath, "w") as outf:
-        outf.write("header\tCDS length\tramp length\tnon-ramp min mean\tramp min mean\tramp strength\tnum ramp region status changing mutations\tnum non-ramp region status changing mutations\tnum reasonably valid ramp mutations\tnum reasonably valid non-ramp mutations\tramp robustness\n")
-        for rampScore in rampScores:
-            if rampScore != "None":
-                outf.write("\t".join(rampScore) + "\n")
+    outf = gzip.open(outPath, "wt") if outPath.endswith(".gz") else open(outPath, "w")
+    outf.write("header\tCDS length\tramp length\tnon-ramp min mean\tramp min mean\tramp strength\tnum ramp region status changing mutations\tnum non-ramp region status changing mutations\tnum reasonably valid ramp mutations\tnum reasonably valid non-ramp mutations\tramp robustness\n")
+    for rampScore in rampScores:
+        if rampScore != "None":
+            outf.write("\t".join(rampScore) + "\n")
+    outf.close()
 
 def determineNewCutoff(pool, seqToSpeed):
     """
