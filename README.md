@@ -26,7 +26,7 @@ pip3 install -r requirements.txt
 ```
 
 # Data Collection and Processing
-We prepared a database of all available NCBI CDS FASTAs for species with reference genomes using the steps outlined in the [NCBI-CDS-Database-Builder](https://github.com/MattCloward/NCBI-CDS-Database-Builder) GitHub repository. The code from that repository was downloaded and placed in the [./scripts/NCBI-CDS-Database-Builder/](./scripts/NCBI-CDS-Database-Builder/) folder and all database-building scripts were run sequentially from that folder. All data was downloaded on Sep 3, 2025 using version 18.6.0 of NCBI's datasets command-line tool.
+We prepared a database of all available NCBI CDS FASTAs for species with reference genomes using the steps outlined in the [NCBI-CDS-Database-Builder](https://github.com/ridgelab/NCBI-CDS-Database-Builder) GitHub repository. The code from that repository was downloaded and placed in the [./scripts/NCBI-CDS-Database-Builder/](./scripts/NCBI-CDS-Database-Builder/) folder and all database-building scripts were run sequentially from that folder. All data was downloaded on Sep 3, 2025 using version 18.6.0 of NCBI's datasets command-line tool.
 
 ## Filter Out Incomplete Assemblies
 [1_filter_by_assembly_level.py](./scripts/1_filter_by_assembly_level.py) moves all species to the [low_assembly](./inputs/low_assembly/) folder whose assembly level is not "chromosome" or "complete genome" (ie: "scaffold" or "contig"). ExtRamp works best on full genomes, so this step filters out species whose genomes are incomplete.
@@ -35,13 +35,13 @@ python 1_filter_by_assembly_level.py
 ```
 
 ## Get New Species Counts
-After filtering out lower quality assemblies, we reran the `6_get_num_database_species.sh' file from the [NCBI-CDS-Database-Builder](https://github.com/MattCloward/NCBI-CDS-Database-Builder) GitHub repository to get an updated count of species left after all filtering steps. This file is saved to [num_database_species.tsv](./outputs/num_database_species.tsv) and is Supplementary Table 1.
+After filtering out lower quality assemblies, we reran the `6_get_num_database_species.sh' file from the [NCBI-CDS-Database-Builder](https://github.com/ridgelab/NCBI-CDS-Database-Builder) GitHub repository to get an updated count of species left after all filtering steps. This file is saved to [num_database_species.tsv](./outputs/num_database_species.tsv) and is Supplementary Table 1.
 ```
 bash 6_get_num_database_species.sh
 ```
 
 ## Get Representative Species
-[2_get_representative_species.py](./scripts/2_get_representative_species.py) creates a [representative_species.tsv](./outputs/representative_species.tsv) file (Supplementary Table 2) containing the species IDs, scientific names, common names (if available), and number of sequences for the species with the least, median, and most sequences for each taxonomic group. The script assumes that the taxonomic data for all species in the database have already been obtained as detailed in the README for the [NCBI-CDS-Database-Builder](https://github.com/MattCloward/NCBI-CDS-Database-Builder) repository.
+[2_get_representative_species.py](./scripts/2_get_representative_species.py) creates a [representative_species.tsv](./outputs/representative_species.tsv) file (Supplementary Table 2) containing the species IDs, scientific names, common names (if available), and number of sequences for the species with the least, median, and most sequences for each taxonomic group. The script assumes that the taxonomic data for all species in the database have already been obtained as detailed in the README for the [NCBI-CDS-Database-Builder](https://github.com/ridgelab/NCBI-CDS-Database-Builder) repository.
 ```
 python 2_get_representative_species.py
 ```
