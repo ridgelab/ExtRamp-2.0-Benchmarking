@@ -63,9 +63,7 @@ We ran each of these programs on our filtered dataset to compare outputs and get
 
 ### Confirm Job Completion
 [4_confirm_completion.sh](./scripts/4_confirm_completion.sh) checks that all jobs completed successfully. It takes in a version, mean function, and score flag, checking all corresponding slurm files to confirm they end with a line starting with "Total time:". The commands run for this step can be found in [4_commands.txt](./scripts/4_commands.txt).
-```
-bash 4_confirm_completion.sh
-```
+
 If any jobs were found to have failed in this step (due to running out of time), we reran them individially with more time using [3_run-submitOneExtRamp.sh](./scripts/3_run-submitOneExtRamp.sh). For example:
 ```
 bash 3_run-submitOneExtRamp.sh GCF_000001405.40 mammalia 1.0 02:00:00 hmean False

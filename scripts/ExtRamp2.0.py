@@ -936,7 +936,7 @@ def getNumCreatingMutations(seqCodons, speeds, windowMeans, codonToReciprocalSpe
     # check any of the ramp window means can be mutated below the nonRampMin
     numRampRegionCreatingMutations, reasonablyValidRampMutations = evaluateMutations(seqCodons, reciprocalSpeeds, range(0,rampRegionEnd), ribosomeWindowLength, nonRampMin, codonToReciprocalSpeed, codonToSlowerValidMutations, "set", "below")
     # check if all of the non-ramp windows can be mutated above the rampMin by one mutation
-    nonRampWindowsToCheck = np.where(windowMeans[rampRegionEnd:] < rampMin)[0].tolist()
+    nonRampWindowsToCheck = (np.where(windowMeans[rampRegionEnd:] < rampMin)[0] + rampRegionEnd).tolist()
     # check if the windows are close enough for a single mutation to affect all of them
     windowsAllOverlap = True
     for index in range(len(nonRampWindowsToCheck)-1):
